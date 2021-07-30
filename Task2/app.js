@@ -30,7 +30,7 @@ app.get("/betterCallSaul", function (req, res) {
   // Using axios to get data from their api
   axios
     .get(
-      "https://www.bdreakingbadapi.com/api/characters?category=Better+Call+Saul"
+      "https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul"
     )
 
     .then(function (response) {
