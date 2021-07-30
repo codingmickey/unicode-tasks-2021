@@ -3,6 +3,7 @@
 // Requiring npm modules
 const express = require("express");
 const axios = require("axios");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -48,5 +49,5 @@ app.get("/betterCallSaul", function (req, res) {
 
 // Setting sever to listen on port 3000
 app.listen(3000, function () {
-  console.log("Server is running on port 3000");
+  console.log("Server is listening on port 3000");
 });
