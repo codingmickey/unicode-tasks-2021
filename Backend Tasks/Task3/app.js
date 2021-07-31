@@ -48,13 +48,14 @@ app.get("/", function (req, res) {
   res.render("home");
 });
 
+// Post route
 app.post("/", function (req, res) {
+  // Access data given by the user making each word Capitalized
   let userFavChar = _.toLower(req.body.favChar);
-
   userFavChar = _.startCase(userFavChar);
-
   console.log(userFavChar);
 
+  // Finding whether the given character is already present in the DB
   FavCharacter.findOne({ name: userFavChar }, function (err, example) {
     if (err) console.log(err);
     if (example) {
@@ -68,6 +69,8 @@ app.post("/", function (req, res) {
         .then(function (response) {
           // handle success
           const userFavcharInfo = response.data[0];
+
+          // Saving new favourite character to the DB
           const newChar = new FavCharacter({
             char_id: userFavcharInfo.char_id,
             name: userFavcharInfo.name,
@@ -95,14 +98,17 @@ app.post("/", function (req, res) {
   });
 });
 
+// Route for successfully adding character
 app.get("/success", function (req, res) {
   res.render("success");
 });
 
+// Route for failure of adding character
 app.get("/failure", function (req, res) {
   res.render("failure");
 });
 
+// Route if character is already saved in DB
 app.get("/storedChar", function (req, res) {
   FavCharacter.find(function (err, characters) {
     if (err) {
