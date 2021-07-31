@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
 
+// Making the app to use/set
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -39,6 +40,7 @@ const favouriteCharSchema = new mongoose.Schema({
 // Favourite character model
 const FavCharacter = mongoose.model("FavCharacters", favouriteCharSchema);
 
+// Api Endpoint Defination
 const apiEndpoint = "https://www.breakingbadapi.com/api/";
 
 // Home route for all the characters in Breaking Bad
@@ -47,7 +49,11 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-  const userFavChar = _.startCase(req.body.favChar);
+  let userFavChar = _.toLower(req.body.favChar);
+
+  userFavChar = _.startCase(userFavChar);
+
+  console.log(userFavChar);
 
   FavCharacter.findOne({ name: userFavChar }, function (err, example) {
     if (err) console.log(err);
@@ -91,9 +97,6 @@ app.post("/", function (req, res) {
 
 app.get("/success", function (req, res) {
   res.render("success");
-});
-app.post("/success", function (req, res) {
-  console.log(req.body);
 });
 
 app.get("/failure", function (req, res) {
