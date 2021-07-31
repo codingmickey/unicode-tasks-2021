@@ -4,40 +4,53 @@
 const express = require("express");
 const axios = require("axios");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const app = express();
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Connection to mongoDB
+mongoose.connect("mongodb://localhost:27017/favCharDB", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Favourite character Schema
+const favouriteCharSchema = new mongoose.Schema({
+  char_id: Number,
+  name: String,
+  birthday: String,
+  occupation: Array,
+  img: String,
+  status: String,
+  nickname: String,
+  appearance: Array,
+  portrayed: String,
+  category: Array,
+});
+
+// Favourite character model
+const FavCharacter = mongoose.model("FavCharacters", favouriteCharSchema);
+
+const apiEndpoint = "https://www.breakingbadapi.com/api/";
 
 // Home route for all the characters in Breaking Bad
 app.get("/", function (req, res) {
-  // Using axios to get data from their api
-  axios
-    .get("https://www.breakingbadapi.com/api/characters")
-
-    .then(function (response) {
-      // handle success
-      console.log(response.data);
-      res.send("Success");
-    })
-
-    .catch(function (error) {
-      // handle error
-      res.send("Error");
-      console.log(error);
-    });
+  res.render("home");
 });
 
-// /betterCallSaul for all the character in Better Call Saul
-app.get("/betterCallSaul", function (req, res) {
+app.post("/", function (req, res) {
+  const userFavChar = req.body.favChar;
+
   // Using axios to get data from their api
   axios
-    .get(
-      "https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul"
-    )
+    .get(apiEndpoint + "characters?name=" + userFavChar)
 
     .then(function (response) {
       // handle success
-      res.send("Success");
-      console.log(response.data);
+      console.log(response.data[0]);
     })
 
     .catch(function (error) {
