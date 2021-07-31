@@ -5,6 +5,7 @@ const express = require("express");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const _ = require("lodash");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -19,7 +20,10 @@ mongoose.connect("mongodb://localhost:27017/favCharDB", {
 
 // Favourite character Schema
 const favouriteCharSchema = new mongoose.Schema({
-  char_id: Number,
+  char_id: {
+    type: Number,
+    required: true,
+  },
   name: String,
   birthday: String,
   occupation: Array,
@@ -29,6 +33,7 @@ const favouriteCharSchema = new mongoose.Schema({
   appearance: Array,
   portrayed: String,
   category: Array,
+  better_call_saul_appearance: Array,
 });
 
 // Favourite character model
@@ -42,22 +47,68 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-  const userFavChar = req.body.favChar;
+  const userFavChar = _.startCase(req.body.favChar);
 
-  // Using axios to get data from their api
-  axios
-    .get(apiEndpoint + "characters?name=" + userFavChar)
+  FavCharacter.findOne({ name: userFavChar }, function (err, example) {
+    if (err) console.log(err);
+    if (example) {
+      console.log("This has already been saved");
+      res.render("alreadySaved");
+    } else {
+      // Using axios to get data from their api
+      axios
+        .get(apiEndpoint + "characters?name=" + userFavChar)
 
-    .then(function (response) {
-      // handle success
-      console.log(response.data[0]);
-    })
+        .then(function (response) {
+          // handle success
+          const userFavcharInfo = response.data[0];
+          const newChar = new FavCharacter({
+            char_id: userFavcharInfo.char_id,
+            name: userFavcharInfo.name,
+            birthday: userFavcharInfo.birthday,
+            occupation: userFavcharInfo.occupation,
+            img: userFavcharInfo.img,
+            status: userFavcharInfo.status,
+            nickname: userFavcharInfo.nickname,
+            appearance: userFavcharInfo.appearance,
+            portrayed: userFavcharInfo.portrayed,
+            category: userFavcharInfo.category,
+            better_call_saul_appearance:
+              userFavcharInfo.better_call_saul_appearance,
+          });
+          newChar.save();
+          res.redirect("/success");
+        })
 
-    .catch(function (error) {
-      // handle error
-      res.send("Error");
-      console.log(error);
-    });
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          res.redirect("/failure");
+        });
+    }
+  });
+});
+
+app.get("/success", function (req, res) {
+  res.render("success");
+});
+app.post("/success", function (req, res) {
+  console.log(req.body);
+});
+
+app.get("/failure", function (req, res) {
+  res.render("failure");
+});
+
+app.get("/storedChar", function (req, res) {
+  FavCharacter.find(function (err, characters) {
+    if (err) {
+      console.log(err);
+      res.render("failure");
+    } else {
+      res.send(characters);
+    }
+  });
 });
 
 // Setting sever to listen on port 3000
