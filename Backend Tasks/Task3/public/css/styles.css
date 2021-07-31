@@ -5,15 +5,18 @@ body {
 
 /* Home Route  */
 img.headerimage {
-  height: 20rem;
   display: block;
-  margin: 40px auto;
+  height: 21rem;
+  margin: 40px auto 10px;
 }
 
 .favChardiv {
   width: 50%;
-  margin: 5% auto;
+  margin: 3% auto;
   font-size: x-large;
+}
+.user-input {
+  margin-top: 1.5rem;
 }
 
 /* Footer */

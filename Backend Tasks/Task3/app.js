@@ -55,6 +55,12 @@ app.post("/", function (req, res) {
   userFavChar = _.startCase(userFavChar);
   console.log(userFavChar);
 
+  // TASK4
+  // Access data to delete a character
+  let deleteChar = _.toLower(req.body.favChar);
+  deleteChar = _.startCase(deleteChar);
+  console.log(deleteChar);
+
   // Finding whether the given character is already present in the DB
   FavCharacter.findOne({ name: userFavChar }, function (err, example) {
     if (err) console.log(err);
@@ -118,6 +124,47 @@ app.get("/storedChar", function (req, res) {
       res.render("savedCharacters", { characters: characters });
     }
   });
+});
+
+// TASK2
+// /breakingBad for all the characters in Breaking Bad
+app.get("/breakingBad", function (req, res) {
+  // Using axios to get data from their api
+  axios
+    .get("https://www.breakingbadapi.com/api/characters")
+
+    .then(function (response) {
+      // handle success
+      console.log(response.data);
+      res.render("breakingBad", { characters: response.data });
+    })
+
+    .catch(function (error) {
+      // handle error
+      res.send("Error");
+      console.log(error);
+    });
+});
+
+// /betterCallSaul for all the character in Better Call Saul
+app.get("/betterCallSaul", function (req, res) {
+  // Using axios to get data from their api
+  axios
+    .get(
+      "https://www.breakingbadapi.com/api/characters?category=Better+Call+Saul"
+    )
+
+    .then(function (response) {
+      // handle success
+      console.log(response.data);
+      res.render("betterCallSaul", { characters: response.data });
+    })
+
+    .catch(function (error) {
+      // handle error
+      res.send("Error");
+      console.log(error);
+    });
 });
 
 // Setting sever to listen on port 3000

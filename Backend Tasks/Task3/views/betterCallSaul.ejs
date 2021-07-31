@@ -1,0 +1,31 @@
+<%- include("header") -%>
+
+<h1 class="storedCharHeading">All the Better Call Saul characters!</h1>
+
+<div class="container storedCharDisplaydiv">
+  <div class="row row-cols-4">
+    <% characters.forEach(function(character){ %>
+
+    <div class="col individualCell">
+      <div class="card bg-dark" style="width: 18rem">
+        <img
+          src="<%= character.img %>"
+          class="card-img-top"
+          alt="<%= character.name %>"
+        />
+        <div class="card-body bg-dark">
+          <h5 class="card-title"><%= character.name %></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Nickname: <%= character.nickname %></li>
+          <li class="list-group-item">
+            Portrayed by: <%= character.portrayed %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <% });%>
+  </div>
+</div>
+
+<%- include("footer") -%>

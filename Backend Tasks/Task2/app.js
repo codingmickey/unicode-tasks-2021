@@ -7,7 +7,7 @@ const axios = require("axios");
 const app = express();
 
 // Home route for all the characters in Breaking Bad
-app.get("/", function (req, res) {
+app.get("/breakingBad", function (req, res) {
   // Using axios to get data from their api
   axios
     .get("https://www.breakingbadapi.com/api/characters")
