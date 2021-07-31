@@ -1,14 +1,21 @@
 <%- include("header") -%>
 
+<img src="/images/headerimage.jpg" class="headerimage" alt="" />
 <div class="favChardiv">
   <form action="/" method="post">
     <div class="mb-3">
       <label for="userFavChar" class="form-label"
         >Enter your Favourite Character:
       </label>
-      <input type="text" class="form-control" id="userFavChar" name="favChar" />
+      <input
+        type="text"
+        class="form-control"
+        id="userFavChar"
+        name="favChar"
+        required
+      />
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-dark btn-lg">Submit</button>
   </form>
 </div>
 

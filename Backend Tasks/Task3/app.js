@@ -115,7 +115,7 @@ app.get("/storedChar", function (req, res) {
       console.log(err);
       res.render("failure");
     } else {
-      res.send(characters);
+      res.render("savedCharacters", { characters: characters });
     }
   });
 });

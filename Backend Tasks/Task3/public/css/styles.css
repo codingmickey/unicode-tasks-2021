@@ -1,8 +1,42 @@
-.favChardiv {
-  width: 50%;
-  margin: 10% auto;
+body {
+  background-color: #0d4e39;
+  color: #ffffff;
 }
 
+/* Home Route  */
+img.headerimage {
+  height: 20rem;
+  display: block;
+  margin: 40px auto;
+}
+
+.favChardiv {
+  width: 50%;
+  margin: 5% auto;
+  font-size: x-large;
+}
+
+/* Footer */
 footer {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Saved Route */
+.btn-saved {
+  margin-left: 10px;
+}
+
+/* Stored Character Route */
+.storedCharHeading {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.storedCharDisplaydiv {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.individualCell {
+  margin-top: 30px;
 }
