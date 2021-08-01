@@ -55,12 +55,6 @@ app.post("/", function (req, res) {
   userFavChar = _.startCase(userFavChar);
   console.log(userFavChar);
 
-  // TASK4
-  // Access data to delete a character
-  let deleteChar = _.toLower(req.body.favChar);
-  deleteChar = _.startCase(deleteChar);
-  console.log(deleteChar);
-
   // Finding whether the given character is already present in the DB
   FavCharacter.findOne({ name: userFavChar }, function (err, example) {
     if (err) console.log(err);
@@ -165,6 +159,33 @@ app.get("/betterCallSaul", function (req, res) {
       res.send("Error");
       console.log(error);
     });
+});
+// TASK2 OVER
+
+// TASK4
+app.post("/deleteChar", function (req, res) {
+  // Access data to delete a character
+  let deleteChar = _.toLower(req.body.favChar);
+  deleteChar = _.startCase(deleteChar);
+  console.log(deleteChar);
+
+  // FavCharacter.findOne({ name: deleteChar }, function (err, example) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  //   if(example) {
+
+  //   }
+  // });
+
+  FavCharacter.findOneAndDelete({ name: deleteChar }, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Succesfully Deleted!");
+      res.redirect("/storedChar");
+    }
+  });
 });
 
 // Setting sever to listen on port 3000
