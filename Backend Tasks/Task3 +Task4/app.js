@@ -135,7 +135,10 @@ app.get("/breakingBad", function (req, res) {
     .then(function (response) {
       // handle success
       console.log(response.data);
-      res.render("breakingBad", { characters: response.data });
+      res.render("allCharacters", {
+        characters: response.data,
+        Title: "Breaking Bad",
+      });
     })
 
     .catch(function (error) {
@@ -156,7 +159,10 @@ app.get("/betterCallSaul", function (req, res) {
     .then(function (response) {
       // handle success
       console.log(response.data);
-      res.render("betterCallSaul", { characters: response.data });
+      res.render("allCharacters", {
+        characters: response.data,
+        Title: "Better Call Saul",
+      });
     })
 
     .catch(function (error) {
@@ -193,6 +199,9 @@ app.post("/deleteChar", function (req, res) {
   });
 });
 // TASK4 OVER
+
+// TASK4 BONUS
+// FavCharacter.updateOne({Filter}, {Updation});
 
 // Setting sever to listen on port 3000
 app.listen(3000, function () {
