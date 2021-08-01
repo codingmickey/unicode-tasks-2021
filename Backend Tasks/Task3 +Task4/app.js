@@ -72,7 +72,11 @@ app.post("/", function (req, res) {
     if (err) console.log(err);
     if (example) {
       console.log("This has already been saved");
-      res.render("alreadySaved", { userFavChar: userFavChar });
+      res.render("alreadySaved", {
+        title: "🔴Uh oh!",
+        userFavChar:
+          userFavChar + " is already saved please Enter a new character...",
+      });
     } else {
       // Using axios to get data from their api
       axios
@@ -170,21 +174,21 @@ app.post("/deleteChar", function (req, res) {
   deleteChar = _.startCase(deleteChar);
   console.log(deleteChar);
 
-  // FavCharacter.findOne({ name: deleteChar }, function (err, example) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   if(example) {
-
-  //   }
-  // });
-
-  FavCharacter.findOneAndDelete({ name: deleteChar }, function (err) {
+  FavCharacter.findOneAndDelete({ name: deleteChar }, function (err, example) {
     if (err) {
       console.log(err);
-    } else {
+    }
+    if (example) {
       console.log("Succesfully Deleted!");
-      res.redirect("/storedChar");
+      res.render("alreadySaved", {
+        title: "🎉Success",
+        userFavChar: deleteChar + " is deleted from the favCharDB😢...",
+      });
+    } else {
+      res.render("alreadySaved", {
+        title: "🔴Uh oh!",
+        userFavChar: deleteChar + " is not present in the favCharDB...",
+      });
     }
   });
 });
