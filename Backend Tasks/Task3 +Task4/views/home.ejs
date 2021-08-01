@@ -1,38 +1,44 @@
 <%- include("header") -%>
 
 <img src="/images/headerimage.jpg" class="headerimage" alt="" />
-<div class="favChardiv">
-  <form action="/" method="post">
-    <div class="mb-3 user-input">
-      <label for="userFavChar" class="form-label"
-        >Enter your Favourite Character:
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        id="userFavChar"
-        name="favChar"
-        required
-      />
-    </div>
-    <button type="submit" class="btn btn-dark btn-lg">Add Character</button>
-  </form>
 
-  <form action="/deleteChar" method="post">
-    <div class="mb-3 user-input">
-      <label for="userdeleteChar" class="form-label"
-        >Enter the Character to Delete:
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        id="userdeleteChar"
-        name="deleteChar"
-        required
-      />
-    </div>
-    <button type="submit" class="btn btn-dark btn-lg">Delete Character</button>
-  </form>
+<div class="container favChardiv row">
+  <div class="col input-col">
+    <form action="/" method="post">
+      <div class="mb-3 user-input">
+        <label for="userFavChar" class="form-label"
+          >Enter your Favourite Character:
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="userFavChar"
+          name="favChar"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-dark btn-lg">Add Character</button>
+    </form>
+  </div>
+  <div class="col">
+    <form action="/deleteChar" method="post">
+      <div class="mb-3 user-input">
+        <label for="userdeleteChar" class="form-label"
+          >Enter a Character to Delete:
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          id="userdeleteChar"
+          name="deleteChar"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-danger btn-lg">
+        Delete Character
+      </button>
+    </form>
+  </div>
 </div>
 
 <%- include("footer") -%>

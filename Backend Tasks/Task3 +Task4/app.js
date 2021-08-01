@@ -60,7 +60,7 @@ app.post("/", function (req, res) {
     if (err) console.log(err);
     if (example) {
       console.log("This has already been saved");
-      res.render("alreadySaved");
+      res.render("alreadySaved", { userFavChar: userFavChar });
     } else {
       // Using axios to get data from their api
       axios
@@ -86,26 +86,16 @@ app.post("/", function (req, res) {
               userFavcharInfo.better_call_saul_appearance,
           });
           newChar.save();
-          res.redirect("/success");
+          res.render("success", { userFavChar: userFavChar });
         })
 
         .catch(function (error) {
           // handle error
           console.log(error);
-          res.redirect("/failure");
+          res.render("failure", { userFavChar: userFavChar });
         });
     }
   });
-});
-
-// Route for successfully adding character
-app.get("/success", function (req, res) {
-  res.render("success");
-});
-
-// Route for failure of adding character
-app.get("/failure", function (req, res) {
-  res.render("failure");
 });
 
 // Route if character is already saved in DB
@@ -113,7 +103,6 @@ app.get("/storedChar", function (req, res) {
   FavCharacter.find(function (err, characters) {
     if (err) {
       console.log(err);
-      res.render("failure");
     } else {
       res.render("savedCharacters", { characters: characters });
     }
@@ -165,7 +154,7 @@ app.get("/betterCallSaul", function (req, res) {
 // TASK4
 app.post("/deleteChar", function (req, res) {
   // Access data to delete a character
-  let deleteChar = _.toLower(req.body.favChar);
+  let deleteChar = _.toLower(req.body.deleteChar);
   deleteChar = _.startCase(deleteChar);
   console.log(deleteChar);
 
@@ -187,6 +176,7 @@ app.post("/deleteChar", function (req, res) {
     }
   });
 });
+// TASK4 OVER
 
 // Setting sever to listen on port 3000
 app.listen(3000, function () {

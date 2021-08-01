@@ -3,10 +3,10 @@
 <h1 class="storedCharHeading">Favourite 🤍 saved characters!</h1>
 
 <div class="container storedCharDisplaydiv">
-  <div class="row row-cols-4">
+  <div class="row">
     <% characters.forEach(function(character){ %>
 
-    <div class="col individualCell">
+    <div class="col-lg-3 col-sm-6 col individualCell">
       <div class="card bg-dark" style="width: 18rem">
         <img
           src="<%= character.img %>"

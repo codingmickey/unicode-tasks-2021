@@ -11,12 +11,15 @@ img.headerimage {
 }
 
 .favChardiv {
-  width: 50%;
+  width: 70%;
   margin: 3% auto;
   font-size: x-large;
 }
 .user-input {
   margin-top: 1.5rem;
+}
+.input-col {
+  margin: 0 50px;
 }
 
 /* Footer */
@@ -42,4 +45,5 @@ footer {
 }
 .individualCell {
   margin-top: 30px;
+  text-align: center;
 }
