@@ -55,18 +55,6 @@ app.post("/", function (req, res) {
   userFavChar = _.startCase(userFavChar);
   console.log(userFavChar);
 
-  console.log(
-    FavCharacter.findOne({ name: userFavChar }, function (err, example) {
-      if (err) console.log(err);
-      if (example) {
-        console.log("Success Found the char", example);
-        userFavChar = example.name;
-      } else {
-        console.log("NOT FOUND", example);
-      }
-    })
-  );
-
   // Finding whether the given character is already present in the DB
   FavCharacter.findOne({ name: userFavChar }, function (err, example) {
     if (err) console.log(err);
@@ -120,6 +108,7 @@ app.get("/storedChar", function (req, res) {
     if (err) {
       console.log(err);
     } else {
+      console.log(characters);
       res.render("savedCharacters", { characters: characters });
     }
   });
