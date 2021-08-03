@@ -1,6 +1,6 @@
 <%- include("header") -%>
 
-<h1 class="storedCharHeading">All the <%= Title %> characters!</h1>
+<h1 class="storedCharHeading"><%= Title %></h1>
 
 <div class="container storedCharDisplaydiv">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
@@ -13,11 +13,26 @@
           class="card-img-top"
           alt="<%= character.name %>"
         />
-        <div class="card-body bg-dark">
+        <div class="card-body">
           <h5 class="card-title"><%= character.name %></h5>
-          <p class="card-text">Nickname: <%= character.nickname %></p>
-          <p class="card-text">Portrayed by: <%= character.portrayed %></p>
         </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-dark">
+            Nickname: <%= character.nickname %>
+          </li>
+          <li class="list-group-item bg-dark">
+            Portrayed by: <%= character.portrayed %>
+          </li>
+          <li class="list-group-item bg-dark">
+            Birthday: <%= character.birthday %>
+          </li>
+          <li class="list-group-item bg-dark">
+            Occupation: <%= character.occupation %>
+          </li>
+          <li class="list-group-item bg-dark">
+            Status: <%= character.status %>
+          </li>
+        </ul>
       </div>
     </div>
     <% });%>

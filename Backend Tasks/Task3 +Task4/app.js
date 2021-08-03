@@ -109,7 +109,10 @@ app.get("/storedChar", function (req, res) {
       console.log(err);
     } else {
       console.log(characters);
-      res.render("savedCharacters", { characters: characters });
+      res.render("allCharacters", {
+        characters: characters,
+        Title: "Favourite 🤍 saved characters!",
+      });
     }
   });
 });
@@ -126,7 +129,7 @@ app.get("/breakingBad", function (req, res) {
       console.log(response.data);
       res.render("allCharacters", {
         characters: response.data,
-        Title: "Breaking Bad",
+        Title: "All the Breaking Bad characters!",
       });
     })
 
@@ -150,7 +153,7 @@ app.get("/betterCallSaul", function (req, res) {
       console.log(response.data);
       res.render("allCharacters", {
         characters: response.data,
-        Title: "Better Call Saul",
+        Title: "All the Better Call Saul characters!",
       });
     })
 

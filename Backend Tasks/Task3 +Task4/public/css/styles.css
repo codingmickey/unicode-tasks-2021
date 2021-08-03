@@ -45,9 +45,13 @@ footer {
 }
 .individualCell {
   margin-top: 30px;
-  text-align: center;
 }
-
+.card-body {
+  padding-bottom: 0;
+}
 .card-title {
   margin-bottom: 15px;
+}
+.list-group-item {
+  color: #ffffff;
 }
