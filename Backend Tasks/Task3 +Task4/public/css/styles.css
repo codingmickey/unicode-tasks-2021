@@ -55,3 +55,11 @@ footer {
 .list-group-item {
   color: #ffffff;
 }
+
+@media only screen and (max-width: 600px) {
+  .individualCell {
+    width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
