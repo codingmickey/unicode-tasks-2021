@@ -1,0 +1,145 @@
+/* Body */
+body {
+  font-size: 1.25rem;
+  font-family: "Montserrat", sans-serif;
+}
+p {
+  line-height: 2;
+}
+
+/* Navbar */
+
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+/* Blog Body content */
+
+/* Header */
+.top-container {
+  margin: 20px 15rem;
+}
+
+.heading-image {
+  width: 25rem;
+  float: left;
+  margin-right: 30px;
+}
+
+/* Content Top */
+.content-top {
+  padding: 20px 15rem;
+  margin-top: 2rem;
+  display: inline-block;
+  text-align: center;
+  background-color: #028090;
+  margin: 6.25rem auto;
+}
+.tweet-reply {
+  width: 25rem;
+  margin: 10px auto;
+}
+
+/* Skills */
+
+.skills {
+  margin: 0 auto;
+  text-align: center;
+}
+.skill-row {
+  width: 50%;
+  margin: 100px auto;
+  text-align: left;
+}
+.code-image {
+  width: 25%;
+  float: left;
+  margin-right: 30px;
+}
+.video-image {
+  width: 25%;
+  float: right;
+  margin-left: 30px;
+}
+
+/* Contact Me */
+
+.contact-me {
+  margin: 6.25rem auto;
+  line-height: 2;
+  text-align: center;
+  background-color: #ef8354;
+  padding: 6rem 17%;
+}
+.contact-message {
+  width: 29.6%;
+  margin: 40px auto 20px;
+}
+.BUTTON_EAO {
+  background: #11cdd4;
+  background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -o-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -webkit-gradient(to bottom, #11cdd4, #11999e);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  height: 20px;
+  line-height: 20px;
+  color: #ffffff;
+  font-family: Arial;
+  width: 157px;
+  font-size: 20px;
+  font-weight: 100;
+  padding: 12px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+.BUTTON_EAO:hover {
+  border: solid #337fed 0;
+  background: #30e3cb;
+  background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -o-linear-gradient(top, #30e3cb, #2bc4ad);
+  background-image: -webkit-gradient(to bottom, #30e3cb, #2bc4ad);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* Footer */
+.icon-footer {
+  margin: 20px 10px;
+}
+
+.white-section {
+  background-color: #fff;
+}
+footer .container-fluid {
+  padding: 7% 15%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .blog-content {
+    margin: 20px 1.25rem;
+  }
+  .heading-image {
+    width: 25rem;
+  }
+  .content-top {
+    padding: 0;
+  }
+  .top-container {
+    margin: 0;
+  }
+  .contact-message {
+    width: 90%;
+  }
+}
